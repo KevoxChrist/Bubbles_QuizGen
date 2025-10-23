@@ -3,7 +3,7 @@ import { Brain, Zap, Target, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
 import styles from "../styles/HomePage.module.css";
 
-// Feature cards data - easy to modify for future teams
+// Features data
 const FEATURES = [
   {
     icon: Brain,
