@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { Brain, Zap, Target, Sparkles } from "lucide-react";
-import { motion } from "motion/react";
-import styles from "../styles/HomePage.module.css";
-
+import { motion } from "framer-motion";
+import "../Home.css";
 // Features data
 const FEATURES = [
   {
@@ -44,27 +43,24 @@ const fadeIn = {
   visible: { opacity: 1 }
 };
 
-export function HomePage() {
+export default function HomePage() {
   return (
-    <div className={styles.container}>
-      
+    <div className="container"> 
       {/* Hero Section */}
-      <section className={styles.hero}>
+      <section className="hero">
         {/* Badge */}
-        <motion.div 
-          className={styles.badge}
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className={styles.badgeText}>
+        <motion.div className="badge" 
+        initial={{ scale: 0.8, opacity: 0 }} 
+        animate={{ scale: 1, opacity: 1 }} 
+        transition={{ duration: 0.5 }} >
+          <span className="badgeText">
             ✨ AI-Powered Quiz Generation
           </span>
         </motion.div>
 
         {/* Main Heading */}
         <motion.h1 
-          className={styles.mainHeading}
+          className="mainHeading"
           variants={fadeInUp}
           initial="hidden"
           animate="visible"
@@ -75,7 +71,7 @@ export function HomePage() {
 
         {/* Subheading */}
         <motion.p 
-          className={styles.subheading}
+          className="subheading"
           variants={fadeInUp}
           initial="hidden"
           animate="visible"
@@ -91,9 +87,9 @@ export function HomePage() {
           animate="visible"
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Link to="/quiz" className={styles.ctaLink}>
-            <button className={styles.ctaButton}>
-              <Sparkles className={styles.buttonIcon} aria-hidden="true" />
+          <Link to="/quiz" className="ctaLink">
+            <button className="ctaButton">
+              <Sparkles className="buttonIcon" aria-hidden="true" />
               Generate Your Quiz
             </button>
           </Link>
@@ -101,9 +97,9 @@ export function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className={styles.featuresSection}>
+      <section className="featuresSection">
         <motion.h2 
-          className={styles.sectionHeading}
+          className="sectionHeading"
           variants={fadeIn}
           initial="hidden"
           whileInView="visible"
@@ -114,31 +110,31 @@ export function HomePage() {
         </motion.h2>
 
         {/* Feature Cards Grid */}
-        <div className={styles.featureGrid}>
+        <div className="featureGrid">
           {FEATURES.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <motion.div
                 key={feature.title}
-                className={styles.featureCardWrapper}
+                className="featureCardWrapper"
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <div className={`${styles.featureCard} ${styles[`feature${feature.color}`]}`}>
+                <div className={`featureCard feature${feature.color}`}>
                   {/* Icon Circle with hover rotation */}
                   <motion.div 
-                    className={`${styles.iconCircle} ${styles[`icon${feature.color}`]}`}
+                    className={`iconCircle icon${feature.color}`}
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <Icon className={styles.icon} aria-hidden="true" />
+                    <Icon className="icon" aria-hidden="true" />
                   </motion.div>
                   
-                  <h3 className={styles.featureTitle}>{feature.title}</h3>
-                  <p className={styles.featureDescription}>{feature.description}</p>
+                  <h3 className="featureTitle">{feature.title}</h3>
+                  <p className="featureDescription">{feature.description}</p>
                 </div>
               </motion.div>
             );
@@ -148,7 +144,7 @@ export function HomePage() {
 
       {/* Use Cases Section */}
       <section 
-        className={styles.useCasesSection}
+        className="useCasesSection"
         aria-label="Use cases for Bubbles quiz application"
       >
         <motion.div
@@ -158,11 +154,11 @@ export function HomePage() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className={styles.useCasesContainer}>
+          <div className="useCasesContainer">
             {USE_CASES.map((item, index) => (
               <motion.span
                 key={item.text}
-                className={`${styles.useCaseBadge} ${styles[`badge${item.color}`]}`}
+                className={`useCaseBadge badge${item.color}`}
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
