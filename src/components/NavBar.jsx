@@ -7,13 +7,6 @@ import { motion } from 'framer-motion';
 import '../styles/shared.css'; 
 
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    console.log('Menu toggle clicked, current state:', menuOpen);
-    setMenuOpen(!menuOpen);
-  };
-
   return (
     <nav className="navbar">
       <div className="navbar-brand">
@@ -33,24 +26,15 @@ function Navbar() {
             Bubbles <span className="divider">|</span> LRNR
           </h1>
         </Link>
-        <button 
-          className="menu-toggle" 
-          onClick={toggleMenu}
-          aria-label="Toggle navigation menu"
-          aria-expanded={menuOpen}
-        >
-          <div className={`hamburger ${menuOpen ? 'active' : ''}`}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
         </button>
       </div>
 
-      <ul className={`navbar-nav ${menuOpen ? 'active' : ''}`}>
-        <li><Link className="nav-link" to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-        <li><Link className="nav-link" to="/account" onClick={() => setMenuOpen(false)}>Account</Link></li>
-        <li><Link className="nav-link" to="/quiz" onClick={() => setMenuOpen(false)}>Quiz</Link></li>
+      <ul className={`navbar-nav }`}>
+        <li><Link className="nav-link" to="/home">Home</Link></li>
+        <li><Link className="nav-link" to="/account">Account</Link></li>
+        <li><Link className="nav-link" to="/quiz">Quiz</Link></li>
       </ul>
     </nav>
   );
