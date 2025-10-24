@@ -1,0 +1,288 @@
+/* Container */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.badge {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.badgeText {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 9999px;
+  border: 2px solid #e9d5ff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-size: 0.875rem;
+}
+
+.mainHeading {
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, #2563eb, #9333ea);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+
+.subheading {
+  color: #4b5563;
+  max-width: 42rem;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.ctaLink {
+  text-decoration: none;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  padding: 0 3rem;
+  background: linear-gradient(to right, #3b82f6, #a855f7);
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.ctaButton:hover {
+  background: linear-gradient(to right, #2563eb, #9333ea);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.ctaButton:focus {
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}
+
+.buttonIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+/* Features Section */
+.featuresSection {
+  margin-top: 4rem;
+}
+
+.sectionHeading {
+  text-align: center;
+  color: #1f2937;
+  margin-bottom: 3rem;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.featureCardWrapper {
+  width: 100%;
+}
+
+.featureCard {
+  padding: 2rem;
+  border-radius: 2rem;
+  border: 2px solid;
+  background: linear-gradient(to bottom right, var(--card-bg-start), var(--card-bg-end));
+  transition: box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.featureCard:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Feature color variants */
+.featureblue {
+  --card-bg-start: #eff6ff;
+  --card-bg-end: #ffffff;
+  border-color: #dbeafe;
+}
+
+.featurepurple {
+  --card-bg-start: #faf5ff;
+  --card-bg-end: #ffffff;
+  border-color: #f3e8ff;
+}
+
+.featurepink {
+  --card-bg-start: #fdf2f8;
+  --card-bg-end: #ffffff;
+  border-color: #fce7f3;
+}
+
+.iconCircle {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.iconblue {
+  background-color: #3b82f6;
+}
+
+.iconpurple {
+  background-color: #a855f7;
+}
+
+.iconpink {
+  background-color: #ec4899;
+}
+
+.icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: white;
+}
+
+.featureTitle {
+  margin-bottom: 0.75rem;
+  color: #1f2937;
+}
+
+.featureDescription {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* Use Cases Section */
+.useCasesSection {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.useCasesContainer {
+  display: inline-flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.useCaseBadge {
+  padding: 0.5rem 1.5rem;
+  background: white;
+  border-radius: 9999px;
+  border: 2px solid;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+/* Badge color variants */
+.badgeblue {
+  border-color: #bfdbfe;
+}
+
+.badgepurple {
+  border-color: #e9d5ff;
+}
+
+.badgepink {
+  border-color: #fbcfe8;
+}
+
+.badgegreen {
+  border-color: #bbf7d0;
+}
+
+/* Responsive Design - 800px breakpoint */
+@media (max-width: 800px) {
+  .container {
+    padding: 2rem 1.5rem;
+  }
+
+  .hero {
+    margin-bottom: 3rem;
+  }
+
+  .featuresSection {
+    margin-top: 4rem;
+  }
+
+  .sectionHeading {
+    margin-bottom: 2rem;
+  }
+
+  .featureGrid {
+    gap: 1.5rem;
+  }
+
+  .featureCard {
+    padding: 1.5rem;
+  }
+
+  .ctaButton {
+    padding: 0 2rem;
+  }
+
+  .useCaseBadge {
+    padding: 0.5rem 1rem;
+  }
+
+  .useCasesSection {
+    margin-top: 4rem;
+  }
+}
+
+@media (min-width: 801px) {
+  .container {
+    padding: 4rem 1.5rem;
+  }
+
+  .hero {
+    margin-bottom: 4rem;
+  }
+
+  .featureGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .featuresSection {
+    margin-top: 6rem;
+  }
+
+  .useCasesSection {
+    margin-top: 6rem;
+  }
+}
+
+/* Accessibility - Focus States */
+.useCaseBadge:focus {
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .ctaButton {
+    background: #3b82f6;
+    color: white;
+  }
+}
