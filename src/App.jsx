@@ -7,15 +7,12 @@ import Navbar from './components/NavBar';
 import Footer from './components/Footer';
 
 import HomePage from './pages/Home.jsx';
-//import Quiz from './pages/Quiz';
+// import Quiz from './pages/Quiz';
 // import Account from './pages/Account';
 
 import './styles/shared.css';
 
-// Re-export HomePage so other files can import it from App.jsx
-export { HomePage };
-
-export default function App() {
+function App() {
   return (
     <Router>
       <div className="app">
@@ -23,7 +20,7 @@ export default function App() {
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* <Route path="/quiz" element={<Quiz />} /> */}
+            {/*<Route path="/quiz" element={<Quiz />} />*/}
             {/* <Route path="/account" element={<Account />} /> */}
           </Routes>
         </main>
@@ -32,3 +29,5 @@ export default function App() {
     </Router>
   );
 }
+
+export default App;
