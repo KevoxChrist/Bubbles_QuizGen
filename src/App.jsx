@@ -7,10 +7,12 @@ import Navbar from './components/NavBar';
 import Footer from './components/Footer';
 
 import HomePage from './pages/Home.jsx';
-// import Quiz from './pages/Quiz';
-// import Account from './pages/Account';
+import Quiz from './pages/Quiz';
+import Account from './pages/Account';
+import Testing from './pages/Testing.jsx';
 
 import './styles/shared.css';
+import './styles/home.css';
 
 function App() {
   return (
@@ -20,8 +22,9 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/*<Route path="/quiz" element={<Quiz />} />*/}
-            {/* <Route path="/account" element={<Account />} /> */}
+            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/take-quiz" element={<Testing/>} />
+            <Route path="/account" element={<Account />} />
           </Routes>
         </main>
         <Footer />

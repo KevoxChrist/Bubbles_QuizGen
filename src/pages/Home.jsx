@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Brain, Zap, Target, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import "../Home.css";
+import "../styles/home.css";
 // Features data
 const FEATURES = [
   {

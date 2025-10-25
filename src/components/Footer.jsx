@@ -4,7 +4,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/shared.css'; 
 
-
 const Footer = () => {
   return (
 <footer className="shared__footer">     
