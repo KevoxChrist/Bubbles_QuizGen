@@ -1,4 +1,4 @@
-// src/pages/QuizTaking.jsx
+// src/pages/Testing.jsx
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/testing.css";
