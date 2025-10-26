@@ -32,7 +32,7 @@ function Navbar() {
       </div>
 
       <ul className={`navbar-nav }`}>
-        <li><Link className="nav-link" to="/home">Home</Link></li>
+        <li><Link className="nav-link" to="/">Home</Link></li>
         <li><Link className="nav-link" to="/account">Account</Link></li>
         <li><Link className="nav-link" to="/quiz">Quiz</Link></li>
       </ul>
