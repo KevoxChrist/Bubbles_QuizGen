@@ -7,8 +7,6 @@ import { motion } from 'framer-motion';
 import '../styles/shared.css'; 
 
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <nav className="navbar">
       <div className="navbar-brand">
@@ -33,7 +31,8 @@ function Navbar() {
         </button>
       </div>
 
-      <ul className={`navbar-nav ${menuOpen ? 'active' : ''}`}>
+      <ul className={`navbar-nav }`}>
+//       <ul className={`navbar-nav ${menuOpen ? 'active' : ''}`}>
         <li><Link className="nav-link" to="/">Home</Link></li>
         <li><Link className="nav-link" to="/account">Account</Link></li>
         <li><Link className="nav-link" to="/quiz">Quiz</Link></li>
