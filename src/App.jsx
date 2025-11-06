@@ -12,8 +12,12 @@ import { BubbleAnimation } from './pages/BubbleAnimation.jsx';
 
 // import Quiz from './pages/Quiz';
 // import Account from './pages/Account';
+// import Quiz from './pages/Quiz';
+// import Account from './pages/Account';
+// import Testing from './pages/Testing.jsx';
 
 import './styles/shared.css';
+import './styles/home.css';
 
 function App() {
   return (
@@ -24,8 +28,9 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/*<Route path="/quiz" element={<Quiz />} />*/}
-            {/* <Route path="/account" element={<Account />} /> */}
+            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/take-quiz" element={<Testing/>} />
+            <Route path="/account" element={<Account />} />
           </Routes>
         </main>
         <Footer />
