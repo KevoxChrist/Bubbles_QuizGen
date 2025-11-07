@@ -1,24 +1,17 @@
 {
-  "name": "bubbles-c17",
+  "name": "vite-project",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm install && cd server && npm install && cd .. && vite build",
+    "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "start": "cd server && node server.js"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.67.0",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "framer-motion": "^12.23.24",
-    "lucide-react": "^0.546.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.4"
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

@@ -6,27 +6,33 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/NavBar';
 import Footer from './components/Footer';
 
-// import Home from './pages/Home';
-// import Account from './pages/Account';
+
+import HomePage from './pages/Home.jsx';
+import { BubbleAnimation } from './pages/BubbleAnimation.jsx';
+
 import Quiz from './pages/Quiz';
+import Account from './pages/Account';
+// import Quiz from './pages/Quiz';
+// import Account from './pages/Account';
+import Testing from './pages/Testing.jsx';
 
 import './styles/shared.css';
+import './styles/home.css';
 
 function App() {
   return (
     <Router>
       <div className="app">
+        <BubbleAnimation />
         <Navbar />
-
         <main>
           <Routes>
-            <Route path="/" element={<Quiz />} />
-            {/* <Route path="/home" element={<Home />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/take-quiz" element={<Testing/>} />
             <Route path="/account" element={<Account />} />
-            <Route path="/quiz" element={<Quiz />} /> */}
           </Routes>
         </main>
-
         <Footer />
       </div>
     </Router>
@@ -34,4 +40,3 @@ function App() {
 }
 
 export default App;
-

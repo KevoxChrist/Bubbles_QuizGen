@@ -4,7 +4,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/shared.css'; 
 
-
 const Footer = () => {
   return (
 <footer className="shared__footer">     
@@ -20,10 +19,10 @@ const Footer = () => {
 
     <div className="col__2">
       <div className="social__links">
-        <a href="#"><i className="fa-brands fa-facebook"></i></a>
-        <a href="#"><i className="fa-brands fa-instagram"></i></a>
-        <a href="#"><i className="fa-brands fa-x-twitter"></i></a>
-        <a href="#"><i className="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.facebook.com"><i className="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com"><i className="fa-brands fa-instagram"></i></a>
+        <a href="https://www.twitter.com"><i className="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.tiktok.com"><i className="fa-brands fa-tiktok"></i></a>
       </div>
     </div>
   <p className="footer__copyright">
