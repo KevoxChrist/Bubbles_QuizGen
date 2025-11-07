@@ -9,18 +9,16 @@ app.use(express.json()); //serving JSON
 app.use(cors()); //Serving frontend requests through cors
 const PORT = process.env.PORT || 3000;
 
+// Serve static files from the dist directory
+app.use(express.static(path.join(__dirname, "..", "dist")));
 
 //-----------------ROUTES------------------------------
 
 app.use("/api", quizRoutes);
 
-//-------------SERVE STATIC FILES (Production)----------
-// Serve static files from the React app build
-app.use(express.static(path.join(__dirname, "../dist")));
-
-// All remaining requests return the React app, so it can handle routing
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../dist/index.html"));
+// Catch-all route to serve the React app for client-side routing
+app.get("/*splat", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
 });
 
 //-------------RUN SERVER---------------------------------
