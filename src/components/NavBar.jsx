@@ -32,7 +32,6 @@ function Navbar() {
       </div>
 
       <ul className={`navbar-nav }`}>
-//       <ul className={`navbar-nav ${menuOpen ? 'active' : ''}`}>
         <li><Link className="nav-link" to="/">Home</Link></li>
         <li><Link className="nav-link" to="/account">Account</Link></li>
         <li><Link className="nav-link" to="/quiz">Quiz</Link></li>

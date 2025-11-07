@@ -31,8 +31,8 @@ function Quiz() {
       return;
     }
 
-    if (formData.questions < 1 || formData.questions > 50) {
-      setError("Number of questions must be between 1 and 50.");
+    if (formData.questions < 1 || formData.questions > 15) {
+      setError("Number of questions must be between 1 and 15.");
       return;
     }
 
@@ -170,11 +170,11 @@ function Quiz() {
                 value={formData.questions}
                 onChange={handleChange}
                 min="1"
-                max="50"
+                max="15"
                 className="input"
                 required
               />
-              <p className="hint">Between 1 and 50 questions</p>
+              <p className="hint">Between 1 and 15 questions</p>
             </div>
           </div>
 

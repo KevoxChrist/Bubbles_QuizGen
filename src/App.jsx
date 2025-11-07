@@ -10,11 +10,11 @@ import Footer from './components/Footer';
 import HomePage from './pages/Home.jsx';
 import { BubbleAnimation } from './pages/BubbleAnimation.jsx';
 
+import Quiz from './pages/Quiz';
+import Account from './pages/Account';
 // import Quiz from './pages/Quiz';
 // import Account from './pages/Account';
-// import Quiz from './pages/Quiz';
-// import Account from './pages/Account';
-// import Testing from './pages/Testing.jsx';
+import Testing from './pages/Testing.jsx';
 
 import './styles/shared.css';
 import './styles/home.css';
