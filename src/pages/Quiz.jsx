@@ -129,11 +129,11 @@ function Quiz() {
               className="input"
             />
             <datalist id="questionStyleList">
-              <option value="Multiple Choice" />
-              <option value="True/False" />
-              <option value="Fill in the Blank" />
-              <option value="Short Answer" />
-              <option value="Mixed (Variety)" />
+              <option value="Cowboy" />
+              <option value="Jedi" />
+              <option value="5 year old" />
+              <option value="Pirate" />
+              <option value="Buzz Light-Year" />
             </datalist>
           </div>
 
@@ -153,9 +153,9 @@ function Quiz() {
                 className="input"
               />
               <datalist id="difficultyList">
-                <option value="Easy" />
-                <option value="Medium" />
-                <option value="Hard" />
+                <option value="Beginner" />
+                <option value="Intermediate" />
+                <option value="Advanced" />
               </datalist>
             </div>
 
