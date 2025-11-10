@@ -23,5 +23,5 @@ app.get("/*splat", (req, res) => {
 
 //-------------RUN SERVER---------------------------------
 app.listen(PORT, async () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port http://localhost:${PORT}`);
 });

@@ -9,12 +9,32 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
   font-family: "Montserrat", sans-serif;
   color: #222;
   background-color: #fff;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 
 a {
@@ -130,9 +150,10 @@ a {
   padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0rem;
   position: relative;
   overflow: hidden;
+  margin-top: auto;
 }
 
 
@@ -150,9 +171,11 @@ a {
 
 .footer-container {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  width: 100%;
 }
 
 .shared__footer h2 {
@@ -163,27 +186,74 @@ a {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.col__1 a {
+.col__1 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  min-width: 150px;
+}
+
+.col__2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  min-width: 150px;
+}
+
+.footer-brand {
+  display: flex;
+  justify-content: center;
+  min-width: 150px;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-logoIcon {
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(to bottom right, #60a5fa, #a855f7);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-logoIcon .sparkle {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+}
+
+.footer-logoText {
+  font-size: 1.25rem;
+  margin: 0;
+  color: #ffffff;
+  text-align: center;
+}
+
+.col__2 a {
   display: block;
-  margin-bottom: 0.5rem;
   color: #ffffff;
   transition: all 0.3s ease;
 }
 
-.col__1 a:hover {
+.col__2 a:hover {
   color: #8b5cf6;
   transform: translateX(2px);
 }
 
-.col__2 h2 {
-  font-size: 1.3rem;
-  font-weight: 600;
-}
-
 .social__links {
-  margin-top: 0.5rem;
-  text-align: center;
-
+  display: flex;
+  gap: 0.75rem;
 }
 
 .social__links i {
@@ -210,6 +280,30 @@ a {
 }
 
 /* ------------------- RESPONSIVE ------------------- */
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .col__1,
+  .col__2,
+  .footer-brand {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .footer-brand {
+    order: -1;
+  }
+
+  .shared__footer {
+    gap: 1rem;
+  }
+}
 
 /* Tablet */
 @media screen and (min-width: 768px) {

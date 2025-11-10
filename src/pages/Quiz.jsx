@@ -23,7 +23,7 @@ function Quiz() {
     });
   };
 
-  const handleGenerateQuiz = (e) => {
+  const handleGenerateQuiz = async (e) => {
     e.preventDefault();
 
     if (!formData.topic.trim()) {
@@ -39,34 +39,46 @@ function Quiz() {
     setError("");
     setIsGenerating(true);
 
-    // Simulated quiz data — replace with Claude API later
-    setTimeout(() => {
-      const sampleQuiz = [
-        {
-          id: 1,
-          question: "What is the capital of Bangladesh?",
-          options: ["Feni", "Dhaka", "Khulna", "Chattogram"],
-          correctAnswer: 1,
+    try {
+      // Make POST request to our API route
+      const response = await fetch("/api/generate-quiz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        {
-          id: 2,
-          question: "What does JSON stand for?",
-          options: [
-            "JavaScript Oriented Network",
-            "JavaScript Object Notation",
-            "Java Syntax Object Naming",
-            "Java Structured Output Node",
-          ],
-          correctAnswer: 1,
-        },
-      ];
-
-      navigate("/take-quiz", {
-        state: { quizData: formData, questions: sampleQuiz },
+        body: JSON.stringify({
+          topic: formData.topic,
+          difficulty: formData.difficulty || "Beginner",
+          numOfQuestions: parseInt(formData.questions),
+          personality: formData.questionStyle || "Neutral",
+        }),
       });
 
+      if (!response.ok) {
+        throw new Error("Failed to generate quiz");
+      }
+
+      // Parse the response from Claude
+      const claudeResponse = await response.json();
+
+      // Navigate to take-quiz page with the claude's quiz data
+      navigate("/take-quiz", {
+        state: {
+          quizData: formData,
+          questions: claudeResponse.questions,
+          quizMetadata: {
+            topic: claudeResponse.topic,
+            difficulty: claudeResponse.difficulty,
+            style: claudeResponse.style
+          }
+        },
+      });
+    } catch (err) {
+      console.error("Error generating quiz:", err);
+      setError("Failed to generate quiz. Please try again.");
+    } finally {
       setIsGenerating(false);
-    }, 1200);
+    }
   };
 
   return (
@@ -129,6 +141,7 @@ function Quiz() {
               className="input"
             />
             <datalist id="questionStyleList">
+              <option value="Normal" />
               <option value="Cowboy" />
               <option value="Jedi" />
               <option value="5 year old" />
@@ -143,7 +156,7 @@ function Quiz() {
               <label htmlFor="difficulty" className="label">
                 Difficulty Level
               </label>
-              <input
+              <select
                 list="difficultyList"
                 id="difficulty"
                 name="difficulty"
@@ -151,19 +164,19 @@ function Quiz() {
                 onChange={handleChange}
                 placeholder="Type or select difficulty..."
                 className="input"
-              />
-              <datalist id="difficultyList">
-                <option value="Beginner" />
-                <option value="Intermediate" />
-                <option value="Advanced" />
-              </datalist>
+              >
+                <option value="" disabled>Type or select difficulty...</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
             </div>
 
             <div className="formGroup">
               <label htmlFor="questions" className="label">
                 Number of Questions
               </label>
-              <input
+              <select
                 type="number"
                 id="questions"
                 name="questions"
@@ -173,7 +186,13 @@ function Quiz() {
                 max="15"
                 className="input"
                 required
-              />
+              >
+                <option value="1">1</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+              </select>
               <p className="hint">Between 1 and 15 questions</p>
             </div>
           </div>

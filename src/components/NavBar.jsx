@@ -4,18 +4,20 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
-import '../styles/shared.css'; 
+import '../styles/shared.css';
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="logo"
           aria-label="Bubbles LRNR - Home"
         >
-          <motion.div 
+          <motion.div
             className="logoIcon"
             whileHover={{ scale: 1.1, rotate: 180 }}
             transition={{ duration: 0.3 }}
@@ -31,8 +33,7 @@ function Navbar() {
         </button>
       </div>
 
-      <ul className={`navbar-nav }`}>
-      
+      <ul className={`navbar-nav ${menuOpen ? 'active' : ''}`}>
         <li><Link className="nav-link" to="/">Home</Link></li>
         <li><Link className="nav-link" to="/account">Account</Link></li>
         <li><Link className="nav-link" to="/quiz">Quiz</Link></li>
