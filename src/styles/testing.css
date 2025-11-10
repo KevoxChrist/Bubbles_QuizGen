@@ -80,6 +80,34 @@
 }
 
 /* ----------------------------------------
+   INPUT
+-------------------------------------------*/
+
+.input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-gray-50);
+  color: var(--color-gray-800);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.25s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+}
+
+.input::placeholder {
+  color: var(--color-gray-400);
+}
+
+/* ----------------------------------------
    BUTTONS
 -------------------------------------------*/
 
@@ -174,6 +202,52 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+/* ----------------------------------------
+   FEEDBACK
+-------------------------------------------*/
+
+.feedback-box {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: var(--radius-xl);
+  border: 2px solid;
+  animation: slide-in 0.3s ease-out;
+}
+
+.feedback-incorrect {
+  background: linear-gradient(135deg, #fef2f2 0%, white 100%);
+  border-color: #fca5a5;
+}
+
+.feedback-correct {
+  background: linear-gradient(135deg, #f0fdf4 0%, white 100%);
+  border-color: #86efac;
+}
+
+.feedback-text {
+  margin: 0 0 0.5rem 0;
+  color: var(--color-gray-800);
+  font-weight: 500;
+}
+
+.feedback-hint {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+  font-style: italic;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

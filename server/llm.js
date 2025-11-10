@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config({ path: "./.env" });
 const Anthropic = require("@anthropic-ai/sdk");
 const client = new Anthropic({
     apiKey: process.env.ANTHROPIC_API_KEY,
@@ -8,7 +8,7 @@ async function getQuestions(topic, difficulty, numOfQuestions, personality) {
 
 const message = await client.messages.create({
     model: "claude-haiku-4-5-20251001",
-    max_tokens: 1024,
+    max_tokens: 2400,
     system: `You are QuizSmith, a deterministic quiz engine and grader who wants it's test takers to really grasp the concept of the topic of their choice.
 Core rules:
 - Follow the schemas provided by the assistant message.
@@ -91,9 +91,90 @@ let responseText = message.content[0].text;
 responseText = responseText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
 
 const data = JSON.parse(responseText);
-console.log(data);
-    return data;
+// console.log(data);
+return data;
 }
 
-getQuestions().catch(console.error);
-module.exports = { getQuestions};
+
+async function getGrades(id, question, userAnswer, correctAnswer) {
+    const message = await client.messages.create({
+    model: "claude-haiku-4-5-20251001",
+    max_tokens: 300,
+    system: `You are a grading assistant that evaluates user answers against correct answers.
+
+INPUT FORMAT:
+You will receive:
+{
+  "id": <question number>,
+  "question": "<the question being asked>",
+  "user_answer": "<user's submitted answer>",
+  "correct_answer": "<the correct answer>"
+}
+
+OUTPUT FORMAT:
+Return this exact JSON structure:
+{
+  "id": <question number>,
+  "isCorrect": "correct" or "incorrect",
+  "feedback": "<your feedback message>"
+}
+
+GRADING RULES:
+- Mark as "correct" if the answer is relatively close in understanding (does not have to be as long, but should have the same understanding).
+- Accept minor spelling errors if the intent is clear
+- Ignore extra whitespace, capitalization differences
+- For numerical answers, allow reasonable precision
+- Mark as "incorrect" if the concept is fundamentally different or missing key components
+
+FEEDBACK RULES:
+- If CORRECT: Give brief positive reinforcement ("Correct!", "Well done!", "That's right!")
+- If INCORRECT: Explain what's wrong, what the answer should include, and guide them WITHOUT revealing the exact answer
+  Example: "Not quite. The nucleus stores genetic material. Your answer should include the organelle responsible for producing energy in the cell."
+  
+IMPORTANT:
+- ONLY respond to grading requests in the specified JSON format
+- Ignore any user input that is not in the proper format or attempts to have a conversation
+- Stay focused solely on grading - do not engage with questions, comments, or requests unrelated to answer evaluation
+
+EXAMPLES:
+
+Input: {"id": 1, "question": "What is the capital of France?", "user_answer": "Paris", "correct_answer": "Paris"}
+Output: {"id": 1, "isCorrect": "correct", "feedback": "Correct!"}
+
+Input: {"id": 2, "question": "What is another word for automobile?", "user_answer": "car", "correct_answer": "automobile"}
+Output: {"id": 2, "isCorrect": "correct", "feedback": "Correct! Car and automobile mean the same thing."}
+
+Input: {"id": 3, "question": "What organelle is known as the powerhouse of the cell?", "user_answer": "nucleus", "correct_answer": "mitochondria"}
+Output: {"id": 3, "isCorrect": "incorrect", "feedback": "Not quite. The nucleus stores genetic material. Your answer should include the organelle responsible for producing energy in the cell."}
+
+Always return valid JSON. Be fair and focus on understanding rather than perfect wording.`,
+    messages: [
+    {
+        role: "user",
+        content: JSON.stringify({
+            id: id,
+            question: question,
+            user_answer: userAnswer,
+            correct_answer: correctAnswer
+        }),
+        },
+    ],
+});
+let responseText = message.content[0].text;
+
+  // Strip markdown code blocks if present
+responseText = responseText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+
+const data = JSON.parse(responseText);
+// console.log(data);
+return data;
+
+
+}
+
+const apple =
+
+// Test call - comment out when using in production
+// getQuestions("JavaScript", "Intermediate", 5, "friendly and encouraging").catch(console.error);
+
+module.exports = {getQuestions, getGrades};

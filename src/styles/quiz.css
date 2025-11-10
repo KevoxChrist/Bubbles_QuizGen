@@ -42,13 +42,14 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0rem;
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
   animation: slide-in 0.4s ease-out;
+
 }
 
 .label {
@@ -64,6 +65,22 @@
   border: 2px solid var(--color-gray-200);
   background-color: var(--color-gray-50);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Specific styling for select elements to prevent text cutoff */
+select.input {
+  padding: 0 3rem 0 1.5rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23999' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.25rem center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+/* Style for placeholder option */
+select.input option[value=""][disabled] {
+  color: #9ca3af;
 }
 
 .select:focus,
@@ -93,7 +110,8 @@
 .hint {
   font-size: 0.875rem;
   color: var(--color-gray-600);
-  margin-top: 0.25rem;
+  margin-top: -1rem;
+  padding-bottom: 1rem;
 }
 
 .tipBox {
